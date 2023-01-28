@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="src/img/pokeball.png" />
+    <script src="script.js"></script>
+</head>
+<body onload="loadPokemon()" id="body">
+
+    <!-- Pokedex open -->
+
+    <div id="pokedex-bg"  onclick="closePokemon()">
+        <div id="pokedex" onclick="doNotClosePokemon(event)">
+          <div class="above"> <!-- Upper Information -->
+            <div id="icons"></div>
+            <h1 id="pokemonName">Name</h1>
+            <div id="pokemonNumber">Number</div>
+            <div id="pokemonTypes">Type</div>
+          </div>
+
+          <div class="below"> <!-- Lower Information -->
+            <div class="navbody">
+              <img id="pokemonImage">
+            <nav>
+              <button id="buttonAbout" onclick="openAbout()">About</button>
+              <button id="buttonStats" onclick="openStats()">Base Stats</button>
+            </nav>
+          </div>
+          <div class="selectionBarBody">
+            <div id="selectionBar">
+              <div id="selectionBarFilled"></div>
+            </div>
+          </div>
+            <div id="infos">
+              <div id="about">
+                <table>
+                  <tr>
+                    <td class="tableHeadings">Base experience</td>
+                    <td id="BaseExperience"></td>
+                  </tr>
+                  <tr>
+                    <td class="tableHeadings">Height</td>
+                    <td id="Height"></td>
+                  </tr>
+                  <tr>
+                    <td class="tableHeadings">Weight</td>
+                    <td id="Weight"></td>
+                  </tr>
+                  <tr>
+                    <td class="tableHeadings">Abilities</td>
+                    <td id="Abilities"></td>
+                  </tr>
+                </table>
+              </div>
+              <div id="baseStats" class="d-none">
+                <table id="stats"></table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+
+    <!-- Pokedex -->
+ 
+    <div class="pokedexUnopened">
+         <!-- header -->
+        <div class="header" id="header">
+          <input placeholder="Suche..." id="search" onkeydown="searchPokemon()" onclick="backToPokedex()"/>
+          <h1 onclick="backToPokedex()">Pokedéx</h1>
+          <div class="headerRight">
+          </div>
+        </div>
+        <div id="allPokemons" class="allPokemons"></div>
+        <!-- buttons unten  -->
+        <div class="buttons">
+          <button id="buttonLoadMore" onclick="loadPokemon()">load more</button>
+          <a href="#header"><button id="buttonScrollUp">scroll up</button></a>
+        </div>
+      </div>
+    
+
+
+</body>
+</html>
