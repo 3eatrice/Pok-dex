@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="src/img/pokeball.png" />
     <script src="script.js"></script>
+    <script src="search.js"></script>
 </head>
 <body onload="loadPokemon()" id="body">
 
-    <!-- Pokedex open -->
+    <!-- Pokemmon open -->
 
-    <div id="pokedex-bg"  onclick="closePokemon()">
+    <div id="pokedex-bg" class="d-none" onclick="closePokemon()">
         <div id="pokedex" onclick="doNotClosePokemon(event)">
           <div class="above"> <!-- Upper Information -->
             <div id="icons"></div>
@@ -70,9 +71,10 @@
     <div class="pokedexUnopened">
          <!-- header -->
         <div class="header" id="header">
-          <input placeholder="Suche..." id="search" onkeydown="searchPokemon()" onclick="backToPokedex()"/>
+          <input placeholder="Search..." id="search" onkeydown="searchPokemon()" onclick="backToPokedex()"/>
           <h1 onclick="backToPokedex()">Pokedéx</h1>
           <div class="headerRight">
+            <img src="src/img/pokeball_logo.png">
           </div>
         </div>
         <div id="allPokemons" class="allPokemons"></div>
