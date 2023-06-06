@@ -12,6 +12,10 @@
 </head>
 <body onload="loadPokemon()" id="body">
 
+  <div class="loadingScreen d-none" id="loadingScreen">
+    <img src="src/img/pokeball_logo.png">
+  </div>
+
     <!-- Pokemmon open -->
 
     <div id="pokedex-bg" class="d-none" onclick="closePokemon()">
@@ -21,6 +25,8 @@
             <h1 id="pokemonName">Name</h1>
             <div id="pokemonNumber">Number</div>
             <div id="pokemonTypes">Type</div>
+            <img src="src/img/arrowLeft.svg" class="arrowLeft" onclick="previousPokemon()">
+            <img src="src/img/arrowRight.svg" class="arrowRight" onclick="nextPokemon()">
           </div>
 
           <div class="below"> <!-- Lower Information -->

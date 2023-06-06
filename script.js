@@ -2,8 +2,12 @@ let allPokemons = [];
 let number;
 let start = 0;
 let limit = 20;
+let currentPokemon;
 
 async function loadPokemon(){
+  document.getElementById('loadingScreen').classList.remove('d-none');
+  document.getElementById('buttonLoadMore').classList.remove('d-none');
+  document.getElementById('body').classList.add('overflow');
     dNone();
   for (let i = start; i < limit; i++) {
     let url = `https://pokeapi.co/api/v2/pokemon/${i+1}`;
@@ -13,6 +17,8 @@ async function loadPokemon(){
     let currentPokemon = allPokemons[i];
     renderPokedex(currentPokemon,i);
   }
+  document.getElementById('loadingScreen').classList.add('d-none');
+  document.getElementById('body').classList.remove('overflow');
   start += 20;
   limit += 20;
 }
@@ -88,6 +94,8 @@ function openPokemon(i) {
     document.getElementById('pokedex-bg').classList.remove('d-none');
     document.getElementById('body').style.overflow='hidden';
     renderPokemonInfo(i);
+    currentPokemon = i;
+    document.addEventListener('keyup', addKeyListener);
 }
 
 function renderPokemonInfo(i){ 
@@ -214,6 +222,7 @@ function showInfos(i){
 
 
 function closePokemon () {
+  document.removeEventListener('keyup', addKeyListener);
     document.getElementById('pokedex-bg').classList.add('d-none');
     document.getElementById('body').style.overflow='visible';
   }
@@ -227,5 +236,35 @@ function backToPokedex () {
   for (let i = 0; i < allPokemons.length; i++) {
     document.getElementById('pokemon'+i).classList.remove('d-none');
     resetValue() 
+  }
+}
+
+function addKeyListener(event) {
+  if (event.code === "ArrowLeft") {
+    previousPokemon();
+  }
+  else if (event.code === "ArrowRight") {
+    nextPokemon();
+  }
+}
+
+/**
+ * function to go to the next pokemon
+ */
+function nextPokemon() {
+  if (currentPokemon < limit-21) {
+    closePokemon();
+    openPokemon(currentPokemon + 1);
+  }
+}
+
+
+/**
+ * function to go to the previous pokemon
+ */
+function previousPokemon() {
+  if (currentPokemon > 0) {
+    closePokemon();
+    openPokemon(currentPokemon - 1);
   }
 }
